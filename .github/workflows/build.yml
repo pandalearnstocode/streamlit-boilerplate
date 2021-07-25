@@ -25,7 +25,7 @@ jobs:
           pytest --cov=./ --cov-report=xml
           codecov
           flake8 --exit-zero --output-file=flake8.txt .
-          pylint . -r n --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" > pylint.txt
+          pylint --exit-zero . > pylint.txt
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
