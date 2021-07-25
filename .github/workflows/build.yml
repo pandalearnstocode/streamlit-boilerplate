@@ -19,6 +19,8 @@ jobs:
         with:
           python-version: 3.8
       # Test
+      - name: Black Code Formatter
+        uses: lgeiger/black-action@v1.0.1
       - name: Test with pytest
         run: |
           pip install pytest pytest-cov coverage pytest-cov flake8 pylint codecov
