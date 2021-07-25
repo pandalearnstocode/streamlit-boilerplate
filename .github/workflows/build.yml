@@ -21,10 +21,10 @@ jobs:
       # Test
       - name: Test with pytest
         run: |
-          pip install pytest codecov pytest-cov coverage pytest-cov flake8
+          pip install pytest pytest-cov coverage pytest-cov flake8 pylint
           pytest --cov=./ --cov-report=xml
-          codecov
           flake8 --exit-zero --output-file=flake8.txt .
+          pylint . -r n --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" > pylint.txt
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
