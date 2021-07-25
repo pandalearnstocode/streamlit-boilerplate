@@ -21,9 +21,10 @@ jobs:
       # Test
       - name: Test with pytest
         run: |
-          pip install pytest codecov pytest-cov coverage pytest-cov
+          pip install pytest codecov pytest-cov coverage pytest-cov flake8
           pytest --cov=./ --cov-report=xml
           codecov
+          flake8 --exit-zero --output-file=flake8.txt .
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
